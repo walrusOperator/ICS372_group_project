@@ -4,12 +4,13 @@ public class Animal {
     private String animal_ID;
     private String animal_Type;
     private String animal_Name;
-    private int weight;
+    private int animal_weight;
     private boolean animal_Allowed;
 
-    public String createAnimal(String type, String name){
+    public void createAnimal(String type, String name, int weight){
         animal_Type = type;
         animal_Name = name;
+        animal_weight = weight;
 
         Random random = new Random();
 
@@ -23,13 +24,11 @@ public class Animal {
 
               animal_Allowed = true;
               animal_ID = genRandomAlphanumeric(5);
-              weight = random.nextInt(100);
           }
           else{
               animal_Allowed = false;
               System.out.println("Animal type is not supported!");
           }
-        return (animal_Type + animal_Name + animal_ID + weight);
     }
 
     private String genRandomAlphanumeric(int length){
