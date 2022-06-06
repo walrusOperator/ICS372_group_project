@@ -23,7 +23,6 @@ public class ShelterList {
                 break;
             case 2:
 //                TODO: list shelters from shelter class to console.
-
 //                TODO: have user select shelter
                 break;
             case 3:
@@ -35,6 +34,5 @@ public class ShelterList {
 //                TODO: provide user feedback
                 break;
         }
-
     }
 }
