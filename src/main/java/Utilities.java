@@ -10,7 +10,7 @@ public class Utilities {
         JSONParser parser = new JSONParser();
 
         try {
-            JSONObject obj = (JSONObject) parser.parse(new FileReader("whatever the file ends up being"));
+            JSONObject obj = (JSONObject) parser.parse(new FileReader("Project1_input.json"));
             return (JSONArray)obj.get("shelter_roster");
         }
         catch(Exception e){
