@@ -1,11 +1,12 @@
 import java.io.*;
-import java.util.*;
+
 import org.json.simple.*;
 import org.json.simple.parser.*;
+
 public class Utilities {
 
     // reads in a JSON file and converts into a JSON object
-    public JSONObject readJSON(){
+    public static JSONObject readJSON(){
         JSONParser parser = new JSONParser();
 
         try {
@@ -17,4 +18,10 @@ public class Utilities {
         }
         return null;
     }
+
+    public static void writeJSON(){
+//        TODO: After shelter and animal classes created build
+    }
+
+
 }
