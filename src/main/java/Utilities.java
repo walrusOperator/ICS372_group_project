@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.List;
 
 import org.json.simple.*;
 import org.json.simple.parser.*;
@@ -17,6 +18,10 @@ public class Utilities {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void writeJSON(List shelters){
+//        TODO: After shelter and animal classes created build
     }
 
 
