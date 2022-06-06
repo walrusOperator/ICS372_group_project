@@ -1,7 +1,8 @@
 import java.io.*;
-import java.util.*;
+
 import org.json.simple.*;
 import org.json.simple.parser.*;
+
 public class Utilities {
 
     // reads in a JSON file and converts into a JSON object
@@ -17,4 +18,6 @@ public class Utilities {
         }
         return null;
     }
+
+
 }
