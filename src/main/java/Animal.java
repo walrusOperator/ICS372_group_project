@@ -4,26 +4,21 @@ public class Animal {
     private String animal_ID;
     private String animal_Type;
     private String animal_Name;
-    private int animal_weight;
+    private float animal_weight;
     private boolean animal_Allowed;
 
-    public void createAnimal(String type, String name, int weight){
-        animal_Type = type;
-        animal_Name = name;
-        animal_weight = weight;
+    public void createAnimal(){
 
-        Random random = new Random();
-
-        if(animal_Type.equals("dog") || animal_Type.equals("DOG") ||
-                                        animal_Type.equals("cat") ||
-                                        animal_Type.equals("CAT") ||
-                                        animal_Type.equals("bird") ||
-                                        animal_Type.equals("BIRD") ||
-                                        animal_Type.equals("rabbit") ||
-                                        animal_Type.equals("RABBIT")) {
+        if(animal_Type.equalsIgnoreCase("dog") ||
+                                        animal_Type.equalsIgnoreCase("cat") ||
+                                        animal_Type.equalsIgnoreCase("bird") ||
+                                        animal_Type.equalsIgnoreCase("rabbit")){
 
               animal_Allowed = true;
-              animal_ID = genRandomAlphanumeric(5);
+              getAnimal_ID();
+              getAnimal_Name();
+              getAnimal_Type();
+              getAnimal_weight();
           }
           else{
               animal_Allowed = false;
@@ -31,12 +26,44 @@ public class Animal {
           }
     }
 
+    public void setAnimalID(){
+        animal_ID = genRandomAlphanumeric(5);
+    }
+
+    public String getAnimal_ID(){
+        return animal_ID;
+    }
+
+    public void setAnimal_Type(String type){
+        animal_Type = type;
+    }
+
+    public String getAnimal_Type(){
+        return animal_Type;
+    }
+
+    public void setAnimal_Name(String name){
+        animal_Name = name;
+    }
+
+    public String getAnimal_Name(){
+        return animal_Name;
+    }
+
+    public void setAnimal_weight(float weight){
+        animal_weight = weight;
+    }
+
+    public float getAnimal_weight(){
+        return animal_weight;
+    }
+
     private String genRandomAlphanumeric(int length){
         String letters = "abcdefghijklmnopqrstuvwxyz";
         char[] alphanumeric = (letters + letters.toUpperCase() + "0123456789").toCharArray();
 
         StringBuilder result = new StringBuilder();
-        for(int i = 0; i < length; i++){
+        for(int i = 0; i < 5; i++){
             result.append(alphanumeric[new Random().nextInt(alphanumeric.length)]);
         }
         return result.toString();
