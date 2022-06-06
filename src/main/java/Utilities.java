@@ -6,12 +6,12 @@ import org.json.simple.parser.*;
 public class Utilities {
 
     // reads in a JSON file and converts into a JSON object
-    public static JSONObject readJSON(){
+    public static JSONArray readJSON(){
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader("whatever the file ends up being"));
-            return (JSONObject) obj;
+            JSONObject obj = (JSONObject) parser.parse(new FileReader("whatever the file ends up being"));
+            return (JSONArray)obj.get("shelter_roster");
         }
         catch(Exception e){
             e.printStackTrace();
