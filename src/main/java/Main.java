@@ -1,5 +1,6 @@
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,14 @@ public class Main {
         int userOption = scan.nextInt();
         switch (userOption){
             case 1:
-                JSONArray j = ShelterList.addIncoming();
-                System.out.println(j);
+
+                ShelterList.addIncoming();
+//                j.forEach( animal -> parseAnimalObject( (JSONObject) animal));
+
+//                JSONArray jsonArray = (JSONArray) j.get("shelter_roster");
+//                for(Object x : j) {
+//                    System.out.println(j);
+//                }
 //                TODO: provide feedback to user if successful
                 break;
             case 2:
@@ -36,5 +43,6 @@ public class Main {
                 break;
         }
     }
+
 }
 

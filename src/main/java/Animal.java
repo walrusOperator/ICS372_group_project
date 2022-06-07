@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Animal {
     private String animal_ID;
     private String animal_Type;
@@ -26,49 +24,29 @@ public class Animal {
           }
     }
 
-    public void setAnimalID(){
-        animal_ID = genRandomAlphanumeric(5);
+    public void setAnimal_ID(String animal_ID) {
+        this.animal_ID = animal_ID;
     }
-
-    public String getAnimal_ID(){
+    public String getAnimal_ID() {
         return animal_ID;
     }
-
-    public void setAnimal_Type(String type){
-        animal_Type = type;
+    public void setAnimal_Type(String animal_Type) {
+        this.animal_Type = animal_Type;
     }
-
-    public String getAnimal_Type(){
+    public String getAnimal_Type() {
         return animal_Type;
     }
-
-    public void setAnimal_Name(String name){
-        animal_Name = name;
+    public void setAnimal_Name(String animal_Name) {
+        this.animal_Name = animal_Name;
     }
-
-    public String getAnimal_Name(){
+    public String getAnimal_Name() {
         return animal_Name;
     }
-
-    public void setAnimal_weight(float weight){
-        animal_weight = weight;
+    public void setAnimal_weight(float animal_weight) {
+        this.animal_weight = animal_weight;
     }
-
-    public float getAnimal_weight(){
+    public float getAnimal_weight() {
         return animal_weight;
-    }
-
-    private String genRandomAlphanumeric(int length){
-        String letters = "abcdefghijklmnopqrstuvwxyz";
-        char[] alphanumeric = (letters + letters.toUpperCase() + "0123456789").toCharArray();
-
-        StringBuilder result = new StringBuilder();
-        for(int i = 0; i < 5; i++){
-            result.append(alphanumeric[new Random().nextInt(alphanumeric.length)]);
-        }
-        return result.toString();
-
-
     }
 }
 
