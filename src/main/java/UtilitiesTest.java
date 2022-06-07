@@ -2,7 +2,7 @@
 
 import org.json.simple.*;
 public class UtilitiesTest {
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         JSONArray smallArray = Utilities.readJSON();
         if(smallArray != null) {
             for (Object o : smallArray) {
@@ -15,5 +15,5 @@ public class UtilitiesTest {
                 System.out.println("Date Received: " + loc.get("receipt_date") + "\n");
             }
         }
-    }
+    }*/
 }
