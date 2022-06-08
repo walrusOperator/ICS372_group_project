@@ -3,7 +3,6 @@ public class Animal {
     private String animal_Type;
     private String animal_Name;
     private float animal_weight;
-    private boolean animal_Allowed;
 
     public void createAnimal(){
 
@@ -12,14 +11,12 @@ public class Animal {
                                         animal_Type.equalsIgnoreCase("bird") ||
                                         animal_Type.equalsIgnoreCase("rabbit")){
 
-              animal_Allowed = true;
               getAnimal_ID();
               getAnimal_Name();
               getAnimal_Type();
               getAnimal_weight();
           }
           else{
-              animal_Allowed = false;
               System.out.println("Animal type is not supported!");
           }
     }
