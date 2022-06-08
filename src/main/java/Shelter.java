@@ -10,10 +10,6 @@ public class Shelter {
         this.shelterID = shelterId;
     }
 
-    public Shelter createShelter(String id){
-        return new Shelter(id);
-
-    }
     public void setReceiving(Boolean receive){
         receiving = receive;
     }
