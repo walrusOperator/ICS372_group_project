@@ -21,4 +21,8 @@ public class Shelter {
     public void setAnimalList(List<Animal> newlist) {
         animalList = newlist;
     }
+
+    public String toString(){
+        return shelterID;
+    }
 }

@@ -14,7 +14,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Please choose from the following options:\n" +
-                "1: Show current animals\n" +
+                "1: Add incoming animals\n" +
                 "2: add incoming animals\n" +
                 "2: enable receiving animals\n" +
                 "3: disable receiving animals\n" +
