@@ -7,14 +7,12 @@ public class ShelterList {
     Map<String, Shelter> mapOfShelters = new HashMap<>();
 
     public void addIncoming() {
-//        Map<String, Shelter> listOfShelters = new HashMap<>();
         JSONArray j = Utilities.readJSON();
         j.forEach( animal -> parseAnimalObject( (JSONObject) animal));
     }
 
     private void parseAnimalObject(JSONObject animal){
-//        TODO: create key using shelter id
-//        TODO: value will contain the shelter object with an array of animal objects in an array
+
         String shelter_id = (String) animal.get("shelter_id");
         String animal_type = (String) animal.get("animal_type");
         String animal_name = (String) animal.get("animal_name");
@@ -33,9 +31,10 @@ public class ShelterList {
             Shelter tempShelter = new Shelter(shelter_id);
             mapOfShelters.put(shelter_id, tempShelter);
         }
-        //            TODO: access list in shelter object, add animal
-
-
+        Shelter tempShelter = mapOfShelters.get(shelter_id);
+        List tempAnimalList = tempShelter.getAnimalList(); //get current list from shelter object in map
+        tempAnimalList.add(tempAnimal); //add new animal to list
+        tempShelter.setAnimalList(tempAnimalList); //set revised animal list into Shelter Object
+        mapOfShelters.put(shelter_id, tempShelter); //replace previous map entry with updated key value pair.
     }
-
 }

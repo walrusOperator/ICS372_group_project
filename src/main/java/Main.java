@@ -3,12 +3,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ShelterList shelterList = new ShelterList();
+        ShelterList shelterMap = new ShelterList();
 //        List shelters = new ArrayList<JSONObject>();
         Scanner scan = new Scanner(System.in);
 
@@ -21,6 +22,7 @@ public class Main {
         int userOption = scan.nextInt();
         switch (userOption){
             case 1:
+                shelterMap.addIncoming();
 //                TODO: provide feedback to user if successful
                 break;
             case 2:
