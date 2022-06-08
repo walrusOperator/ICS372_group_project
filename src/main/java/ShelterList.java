@@ -49,4 +49,23 @@ public class ShelterList {
                 mapOfShelters.put(shelter_id, tempShelter); //replace previous map entry with updated key value pair.
         }
     }
+
+    public void addShelter(String id){
+        mapOfShelters.put(id, new Shelter(id));
+    }
+
+    public void showShelters(){
+        System.out.println(mapOfShelters.values());
+    }
+
+    public boolean containsShelter(String id){
+        if(mapOfShelters.containsKey(id)) {
+            return true;
+        }
+        return false;
+    }
+
+    public Shelter getShelter(String id){
+        return mapOfShelters.get(id);
+    }
 }

@@ -4,14 +4,18 @@ import java.util.List;
 public class Shelter {
     private List<Animal> animalList = new ArrayList<Animal>();
     private String shelterID;
-    private  Boolean receiving;
+    private boolean receiving = true;
 
     Shelter(String shelterId){
         this.shelterID = shelterId;
     }
 
-    public void setReceiving(Boolean receive){
+    public void setReceiving(boolean receive){
         receiving = receive;
+    }
+
+    public boolean isReceiving(){
+        return receiving;
     }
 
     public List<Animal> getAnimalList() {
@@ -24,5 +28,8 @@ public class Shelter {
 
     public String toString(){
         return shelterID;
+    }
+    public int size(){
+        return animalList.size();
     }
 }

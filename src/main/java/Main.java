@@ -12,32 +12,68 @@ public class Main {
         ShelterList shelterMap = new ShelterList();
 //        List shelters = new ArrayList<JSONObject>();
         Scanner scan = new Scanner(System.in);
-
+        String selected = "";
         System.out.println("Please choose from the following options:\n" +
-                "1: Add incoming animals\n" +
-                "2: add incoming animals\n" +
-                "2: enable receiving animals\n" +
-                "3: disable receiving animals\n" +
-                "4: export json file\n");
+                    "1: Import json of animals\n" +
+                    "2: Add additional incoming animal\n" +
+                    "3: Enable receiving animals\n" +
+                    "4: Disable receiving animals\n" +
+                    "5: Export json file\n");
         int userOption = scan.nextInt();
-        switch (userOption){
-            case 1:
-                shelterMap.addIncoming();
+        scan.nextLine();
+        switch (userOption) {
+                case 1:
+                    shelterMap.addIncoming();
 //                TODO: provide feedback to user if successful
-                break;
-            case 2:
+                    break;
+                case 2:
 //                TODO: list shelters from shelter class to console.
+                    System.out.println("Please select a shelter: ");
+                    shelterMap.showShelters();
 //                TODO: have user select shelter
-                break;
-            case 3:
+                    selected = scan.nextLine();
+                    if(shelterMap.containsShelter(selected)){
+                        if(shelterMap.getShelter(selected).isReceiving()){
+
+                        } else{
+                            System.out.println("This shelter is not receiving animals.");
+                        }
+                    } else {
+                        System.out.println("This is not a valid shelter.");
+                    }
+//                TODO: have user add in animal data
+                    break;
+                case 3:
 //                TODO: list shelters from shelter class to console.
+                    System.out.println("Please select a shelter: ");
+                    shelterMap.showShelters();
 //                TODO: have user select shelter
-                break;
-            case 4:
-                Utilities.writeJSON();
+                    selected = scan.nextLine();
+                    if (shelterMap.containsShelter(selected)) {
+                        shelterMap.getShelter(selected).setReceiving(true);
+                        System.out.println("Shelter " + selected + " is receiving animals.");
+                    } else {
+                        System.out.println("This is not a valid shelter.");
+                    }
+                    break;
+                case 4:
+//                TODO: list shelters from shelter class to console.
+                    System.out.println("Please select a shelter: ");
+                    shelterMap.showShelters();
+//                TODO: have user select shelter
+                    selected = scan.nextLine();
+                    if (shelterMap.containsShelter(selected)) {
+                        shelterMap.getShelter(selected).setReceiving(false);
+                        System.out.println("Shelter " + selected + " is not receiving animals.");
+                    } else {
+                        System.out.println("This is not a valid shelter.");
+                    }
+                    break;
+                case 5:
+                    Utilities.writeJSON();
 //                TODO: provide user feedback
-                break;
-        }
+                    break;
+            }
     }
 
 }
