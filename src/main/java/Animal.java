@@ -36,12 +36,21 @@ public class Animal {
     public double getAnimal_weight() {
         return animal_weight;
     }
-
     public void setReceipt_date(long receipt_date) {
         this.receipt_date = receipt_date;
     }
     public long getReceipt_date() {
         return receipt_date;
+    }
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "animal_ID='" + animal_ID + '\'' +
+                ", animal_Type='" + animal_Type + '\'' +
+                ", animal_Name='" + animal_Name + '\'' +
+                ", animal_weight=" + animal_weight +
+                ", receipt_date=" + receipt_date +
+                '}';
     }
 }
 
