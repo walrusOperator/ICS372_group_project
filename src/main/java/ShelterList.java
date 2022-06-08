@@ -9,8 +9,8 @@ public class ShelterList {
     public void addIncoming() {
         JSONArray j = Utilities.readJSON();
         j.forEach( animal -> parseAnimalObject( (JSONObject) animal));
-//        List temp = mapOfShelters.get("12513").getAnimalList();
-//        System.out.println(temp);
+        Shelter temp = mapOfShelters.get("12513");
+
     }
 
     private void parseAnimalObject(JSONObject animal) {
