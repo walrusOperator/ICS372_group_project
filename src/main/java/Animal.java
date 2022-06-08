@@ -2,16 +2,28 @@ public class Animal {
     private String animal_ID;
     private String animal_Type;
     private String animal_Name;
-    private double animal_weight;
-    private long receipt_date;
+    private float animal_weight;
+    private boolean animal_Allowed;
 
-    public Animal(String animal_Type, String animal_Name, String animal_ID, double animal_weight, long receipt_date) {
-        this.animal_ID = animal_ID;
-        this.animal_Name = animal_Name;
-        this.animal_Type = animal_Type;
-        this.animal_weight = animal_weight;
-        this.receipt_date = receipt_date;
+    public void createAnimal(){
+
+        if(animal_Type.equalsIgnoreCase("dog") ||
+                                        animal_Type.equalsIgnoreCase("cat") ||
+                                        animal_Type.equalsIgnoreCase("bird") ||
+                                        animal_Type.equalsIgnoreCase("rabbit")){
+
+              animal_Allowed = true;
+              getAnimal_ID();
+              getAnimal_Name();
+              getAnimal_Type();
+              getAnimal_weight();
+          }
+          else{
+              animal_Allowed = false;
+              System.out.println("Animal type is not supported!");
+          }
     }
+
     public void setAnimal_ID(String animal_ID) {
         this.animal_ID = animal_ID;
     }
@@ -30,16 +42,11 @@ public class Animal {
     public String getAnimal_Name() {
         return animal_Name;
     }
-    public void setAnimal_weight(double animal_weight) {
+    public void setAnimal_weight(float animal_weight) {
         this.animal_weight = animal_weight;
     }
-    public double getAnimal_weight() {
+    public float getAnimal_weight() {
         return animal_weight;
     }
-    public void setReceipt_date(long receipt_date) {
-        this.receipt_date = receipt_date;
-    }
-    public long getReceipt_date() {
-        return receipt_date;
-    }
 }
+

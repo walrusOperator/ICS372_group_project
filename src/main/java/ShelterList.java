@@ -1,42 +1,40 @@
 import org.json.simple.*;
 import org.json.simple.JSONObject;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Scanner;
+
+import java.util.*;
 
 public class ShelterList {
-//    public static void main(String[] args) {
-//
-//    }
+    Map<String, Shelter> mapOfShelters = new HashMap<>();
 
-    public static void addIncoming() {
+    public void addIncoming() {
         JSONArray j = Utilities.readJSON();
-
         j.forEach( animal -> parseAnimalObject( (JSONObject) animal));
-
-//        return Utilities.readJSON();
-
-//        TODO: Get JSON array from utilities
-//        TODO: for each loop passing shelter ID to createShelter()
-//        TODO: for each loop of shelter objects to populate with matching animals
-//        TODO: method to return shelters by ShelterID
     }
-    private static void parseAnimalObject(JSONObject animal){
-        JSONObject animalObject = animal;
 
-        String shelter_id = (String) animalObject.get("shelter_id");
-        System.out.println(shelter_id);
-        String animal_type = (String) animalObject.get("animal_type");
-        System.out.println(animal_type);
-        String animal_name = (String) animalObject.get("animal_name");
-        System.out.println(animal_name);
-        String animal_id = (String) animalObject.get("animal_id");
-        System.out.println(animal_id+"\n");
-//        float animal_weight = (float) animalObject.get("weight");
+    private void parseAnimalObject(JSONObject animal){
+
+        String shelter_id = (String) animal.get("shelter_id");
+        String animal_type = (String) animal.get("animal_type");
+        String animal_name = (String) animal.get("animal_name");
+        String animal_id = (String) animal.get("animal_id");
+        double animal_weight = (double) animal.get("weight");
+        long receipt_date = (long) animal.get("receipt_date");
+        System.out.println(receipt_date+"\n");
+//        System.out.println(shelter_id);
+//        System.out.println(animal_type);
+//        System.out.println(animal_name);
+//        System.out.println(animal_id+"\n");
 //        System.out.println(animal_weight);
-//        int receipt_date = (int) animalObject.get("receipt_date");
-//        System.out.println(receipt_date+"\n");
 
+        Animal tempAnimal = new Animal(animal_type, animal_name, animal_id, animal_weight, receipt_date);
+        if(!(mapOfShelters.containsKey(shelter_id))) {
+            Shelter tempShelter = new Shelter(shelter_id);
+            mapOfShelters.put(shelter_id, tempShelter);
+        }
+        Shelter tempShelter = mapOfShelters.get(shelter_id);
+        List tempAnimalList = tempShelter.getAnimalList(); //get current list from shelter object in map
+        tempAnimalList.add(tempAnimal); //add new animal to list
+        tempShelter.setAnimalList(tempAnimalList); //set revised animal list into Shelter Object
+        mapOfShelters.put(shelter_id, tempShelter); //replace previous map entry with updated key value pair.
     }
-
 }

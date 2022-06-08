@@ -14,12 +14,15 @@ public class Shelter {
         return new Shelter(id);
 
     }
-    public void enableReceiving(){
-        this.receiving = true;
-
+    public void setReceiving(Boolean receive){
+        receiving = receive;
     }
-    public void disableReceiving (){
-        this.receiving = false;
 
+    public List<Animal> getAnimalList() {
+        return animalList;
+    }
+
+    public void setAnimalList(List<Animal> newlist) {
+        animalList = newlist;
     }
 }
