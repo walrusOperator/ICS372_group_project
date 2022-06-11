@@ -33,7 +33,9 @@ public class Shelter {
     public String toString(){
         return shelterID;
     }
-
+/*
+returns a string of all animals in the list for specific shelter
+ */
     public String showAnimals(){
         String str = "Shelter: " + shelterID + "\n";
 
