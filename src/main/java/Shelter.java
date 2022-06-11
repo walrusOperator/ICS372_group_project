@@ -11,18 +11,22 @@ public class Shelter {
     }
 
     public void setReceiving(boolean receive){
+
         receiving = receive;
     }
 
     public boolean isReceiving(){
+
         return receiving;
     }
 
     public List<Animal> getAnimalList() {
+
         return animalList;
     }
 
     public void setAnimalList(List<Animal> newlist) {
+
         animalList = newlist;
     }
 
@@ -30,6 +34,7 @@ public class Shelter {
         return shelterID;
     }
     public int size(){
+
         return animalList.size();
     }
 }
