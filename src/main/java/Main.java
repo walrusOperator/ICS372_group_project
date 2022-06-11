@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +15,8 @@ public class Main {
                     "3: Enable receiving animals\n" +
                     "4: Disable receiving animals\n" +
                     "5: See animals in a shelter\n" +
-                    "6: Export json file");
+                    "6: See animals in ALL shelters\n" +
+                    "7: Export json file");
             int userOption = scan.nextInt();
             scan.nextLine();
             userMenu(userOption);
@@ -70,6 +72,10 @@ public class Main {
                     }
                     break;
                 case 6:
+                    showAllAnimals();
+
+                    break;
+                case 7:
                     Utilities.writeJSON(shelterMap);
 //                TODO: provide user feedback
                     break;
@@ -135,6 +141,18 @@ public class Main {
                 System.out.println("Not a valid animal type.");
             }
 //        }
+        }
+
+        public static void showAllAnimals(){
+            List<Shelter> allShelters = new ArrayList<>(shelterMap.getShelters());
+            for (int i = 0; i < allShelters.size(); i++) {
+                Shelter currentShelter = allShelters.get(i);
+                System.out.println("Shelter ID: " + currentShelter);
+                for (int j = 0; j < currentShelter.size(); j++) {
+                    System.out.println(currentShelter.getAnimalList().get(j));
+                }
+                System.out.println();
+            }
         }
 }
 

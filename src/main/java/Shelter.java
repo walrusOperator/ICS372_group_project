@@ -39,6 +39,7 @@ public class Shelter {
 
         for (int i = 0; i < size(); i++) {
             str += animalList.get(i).toString();
+            str += "\n";
         }
         return str;
 
