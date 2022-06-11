@@ -68,7 +68,7 @@ public class Main {
 
         public static void shelterExists(String selected, boolean status) {
             if (!shelterMap.containsShelter(selected)) {
-                System.out.println("This is not a valid shelter\n");
+                System.out.println("This is not a valid shelter");
             } else {
                 shelterMap.getShelter(selected).setReceiving(status);
             }
