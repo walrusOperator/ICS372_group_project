@@ -13,7 +13,8 @@ public class Main {
                     "2: Add additional incoming animal\n" +
                     "3: Enable receiving animals\n" +
                     "4: Disable receiving animals\n" +
-                    "5: Export json file");
+                    "5: See animals in a shelter\n" +
+                    "6: Export json file");
             int userOption = scan.nextInt();
             scan.nextLine();
             userMenu(userOption);
@@ -34,7 +35,6 @@ public class Main {
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
                     boolean shelterAvailable = shelterSearch(selected);
-//                TODO: have user add in animal data
                     if(shelterAvailable) {
                         addNewAnimal(selected);
                     }
@@ -49,6 +49,7 @@ public class Main {
                         changeReceiving(selected, true);
                     }
                     break;
+
                 case 4:
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
@@ -58,7 +59,17 @@ public class Main {
                         changeReceiving(selected, false);
                     }
                     break;
+
                 case 5:
+                    shelterMap.showShelters();
+                    System.out.println("Please select a shelter: ");
+                    selected = scan.nextLine();
+                    shelterAvailable = shelterSearch(selected);
+                    if(shelterAvailable){
+                        System.out.println(shelterMap.getShelter(selected).showAnimals());
+                    }
+                    break;
+                case 6:
                     Utilities.writeJSON(shelterMap);
 //                TODO: provide user feedback
                     break;

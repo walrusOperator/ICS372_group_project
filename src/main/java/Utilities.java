@@ -24,7 +24,6 @@ public class Utilities {
     }
 
     public static void writeJSON(ShelterList roster){
-//        TODO: After shelter and animal classes created build
         JSONArray sheltersToWrite = new JSONArray();
         JSONObject fileData = new JSONObject();
         List<Shelter> allShelters =  new ArrayList<Shelter>(roster.getShelters());

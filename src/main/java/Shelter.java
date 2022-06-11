@@ -33,8 +33,17 @@ public class Shelter {
     public String toString(){
         return shelterID;
     }
-    public int size(){
 
+    public String showAnimals(){
+        String str = "Shelter: " + shelterID + "\n";
+
+        for (int i = 0; i < size(); i++) {
+            str += animalList.get(i).toString();
+        }
+        return str;
+
+    }
+    public int size(){
         return animalList.size();
     }
 }
