@@ -3,12 +3,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    static ShelterList shelterMap = new ShelterList();
+    private static final ShelterList shelterMap = new ShelterList();
 
+    /**
+     * Method controls flow of user input from console.
+     */
+    @SuppressWarnings("InfiniteLoopStatement")
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         do {
-//            TODO: Add field for show all animals
             System.out.println("Please choose from the following options:\n" +
                     "1: Import json of animals\n" +
                     "2: Add additional incoming animal\n" +
@@ -23,8 +26,12 @@ public class Main {
         } while(true);
     }
 
-        public static void userMenu(int userOption) {
-            String selected = "";
+    /**
+     * Method directs program commands for user selection through switch case
+     * @param userOption - (int) user selected value from main()
+     */
+    public static void userMenu(int userOption) {
+            String selected;
             Scanner scan = new Scanner(System.in);
 
             switch (userOption) {
@@ -38,7 +45,8 @@ public class Main {
                     selected = scan.nextLine();
                     boolean shelterAvailable = shelterSearch(selected);
                     if(shelterAvailable) {
-                        addNewAnimal(selected);
+                        addUserCreatedAnimal(createNewAnimal(), selected);
+//                        createNewAnimal(selected);
                     }
                     break;
 
@@ -77,12 +85,16 @@ public class Main {
                     break;
                 case 7:
                     Utilities.writeJSON(shelterMap);
-//                TODO: provide user feedback
                     break;
             }
         }
 
-        public static boolean shelterSearch(String selected){
+    /**
+     * Method responsible for verifying that a shelter exists and is accepting new Animal objects
+     * @param selected - (String) User submitted String for shelter name search
+     * @return - boolean representing if new Animal objects can be added to shelter
+     */
+    public static boolean shelterSearch(String selected){
             if (shelterMap.containsShelter(selected)) {
                 if (shelterMap.getShelter(selected).isReceiving()) {
                     return true;
@@ -96,12 +108,13 @@ public class Main {
             return false;
         }
 
-        public static void changeReceiving(String selected, boolean status) {
-//            if (!shelterMap.containsShelter(selected)) {
-//                System.out.println("This is not a valid shelter.");
-//            } else {
-//                shelterMap.getShelter(selected).setReceiving(status);
-//            }
+    /**
+     * Method to toggle isReceiving attribute of a Shelter object to receiving or not receiving based on
+     * submitted shelter name and boolean value.
+     * @param selected - (String) user submitted shelter name
+     * @param status - (boolean) true enables receiving, false disables
+     */
+    public static void changeReceiving(String selected, boolean status) {
             if(status){
                 System.out.println("Receiving enabled for shelter " + selected + "\n");
             } else {
@@ -109,44 +122,61 @@ public class Main {
             }
         }
 
-        public static void addNewAnimal(String selected) {
+    /**
+     *
+     * @return
+     */
+    public static Animal createNewAnimal() {
             Scanner scan = new Scanner(System.in);
-//            if(!shelterMap.containsShelter(selected)){
-//                System.out.println("This is not a valid shelter.");
-//            } else {
             System.out.println("Please enter the animal type: ");
             String type = scan.nextLine();
-//            should we consider making a method for this? Also used in ShelterList
             if (shelterMap.validAnimal(type)) {
+                try {
+                    System.out.println("Please enter the animal name: ");
+                    String name = scan.nextLine();
+                    System.out.println("Please enter the animal ID: ");
+                    String id = scan.nextLine();
+                    System.out.println("Please enter the animal weight: ");
+                    double weight = scan.nextDouble();
+                    scan.nextLine();
+                    System.out.println("Please enter the receipt date: ");
+                    long receipt = scan.nextLong();
+                    scan.nextLine();
 
-                System.out.println("Please enter the animal name: ");
-                String name = scan.nextLine();
-                System.out.println("Please enter the animal ID: ");
-                String id = scan.nextLine();
-                System.out.println("Please enter the animal weight: ");
-                double weight = scan.nextDouble();
-                scan.nextLine();
-                System.out.println("Please enter the receipt date: ");
-                long receipt = scan.nextLong();
-                scan.nextLine();
-
-                Animal addition = new Animal(type, name, id, weight, receipt);
-                Shelter tempShelter = shelterMap.getShelter(selected);
-                List<Animal> tempList = tempShelter.getAnimalList();
-                tempList.add(addition);
-                tempShelter.setAnimalList(tempList);
-
-                System.out.println("New Animal has been added.");
+                    return new Animal(type, name, id, weight, receipt);
+                }catch (Exception e){
+                    System.out.println("Animal could not be created\n");
+                    return null;
+                }
             } else {
-                System.out.println("Not a valid animal type.");
+                System.out.println("Not a valid animal type.\n");
+                return null;
             }
-//        }
         }
 
-        public static void showAllAnimals(){
+    /**
+     *
+     * @param newAnimal
+     * @param selected
+     */
+    public static void addUserCreatedAnimal(Animal newAnimal, String selected){
+            try{
+                Shelter tempShelter = shelterMap.getShelter(selected);
+                List<Animal> tempList = tempShelter.getAnimalList();
+                tempList.add(newAnimal);
+                tempShelter.setAnimalList(tempList);
+                System.out.println("New Animal has been added.\n");
+            } catch (Exception e) {
+                System.out.println("Animal could not be added.\n");
+            }
+        }
+
+    /**
+     *
+     */
+    public static void showAllAnimals(){
             List<Shelter> allShelters = new ArrayList<>(shelterMap.getShelters());
-            for (int i = 0; i < allShelters.size(); i++) {
-                Shelter currentShelter = allShelters.get(i);
+            for (Shelter currentShelter : allShelters) {
                 System.out.println("Shelter ID: " + currentShelter);
                 for (int j = 0; j < currentShelter.size(); j++) {
                     System.out.println(currentShelter.getAnimalList().get(j));
