@@ -9,7 +9,7 @@ public class ShelterList {
     public void addIncoming() {
         JSONArray j = Utilities.readJSON();
         j.forEach( animal -> parseAnimalObject( (JSONObject) animal));
-        Shelter temp = mapOfShelters.get("12513");
+//        Shelter temp = mapOfShelters.get("12513");
 
     }
 
@@ -20,20 +20,14 @@ public class ShelterList {
         String animal_name = (String) animal.get("animal_name");
         String animal_id = (String) animal.get("animal_id");
         Object temp = animal.get("weight");
-        Double animal_weight = 0.0;
+        Double animal_weight;
         if(temp instanceof Double){
             animal_weight = (Double) temp;
         } else {
             animal_weight = ((Long) temp).doubleValue();
         }
         long receipt_date = (long) animal.get("receipt_date");
-//        System.out.println(receipt_date + "\n");
-//        System.out.println(shelter_id);
-//        System.out.println(animal_type);
-//        System.out.println(animal_name);
-//        System.out.println(animal_id+"\n");
-//        System.out.println(animal_weight);
-        //Validation that animal is allowed
+
         if (animal_type.equalsIgnoreCase("dog") || animal_type.equalsIgnoreCase("cat") ||
                 animal_type.equalsIgnoreCase("bird") || animal_type.equalsIgnoreCase("rabbit")) {
 
@@ -71,5 +65,6 @@ public class ShelterList {
 
     public int size(){ return mapOfShelters.size();}
 
-    public Collection<Shelter> getShelters(){return mapOfShelters.values();}
+    public Collection<Shelter> getShelters(){
+        return mapOfShelters.values();}
 }
