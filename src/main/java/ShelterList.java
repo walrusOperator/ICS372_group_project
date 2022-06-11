@@ -63,7 +63,8 @@ public class ShelterList {
         return mapOfShelters.get(id);
     }
 
-    public int size(){ return mapOfShelters.size();}
+    public int size(){
+        return mapOfShelters.size();}
 
     public Collection<Shelter> getShelters(){
         return mapOfShelters.values();}
