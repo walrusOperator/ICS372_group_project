@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         do {
+//            TODO: Add field for show all animals
             System.out.println("Please choose from the following options:\n" +
                     "1: Import json of animals\n" +
                     "2: Add additional incoming animal\n" +
