@@ -68,4 +68,8 @@ public class ShelterList {
     public Shelter getShelter(String id){
         return mapOfShelters.get(id);
     }
+
+    public int size(){ return mapOfShelters.size();}
+
+    public Collection<Shelter> getShelters(){return mapOfShelters.values();}
 }
