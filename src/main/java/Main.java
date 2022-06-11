@@ -1,27 +1,27 @@
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    Scanner scan = new Scanner(System.in);
+    static ShelterList shelterMap = new ShelterList();
     public static void main(String[] args) {
-        ShelterList shelterMap = new ShelterList();
-//        List shelters = new ArrayList<JSONObject>();
         Scanner scan = new Scanner(System.in);
-        String selected = "";
-        System.out.println("Please choose from the following options:\n" +
+        while(true) {
+            System.out.println("Please choose from the following options:\n" +
                     "1: Import json of animals\n" +
                     "2: Add additional incoming animal\n" +
                     "3: Enable receiving animals\n" +
                     "4: Disable receiving animals\n" +
                     "5: Export json file\n");
-        int userOption = scan.nextInt();
-        scan.nextLine();
-        switch (userOption) {
+            int userOption = scan.nextInt();
+            scan.nextLine();
+            userMenu(userOption);
+        }
+    }
+        public static void userMenu(int userOption) {
+            String selected = "";
+            Scanner scan = new Scanner(System.in);
+
+            switch (userOption) {
                 case 1:
                     shelterMap.addIncoming();
 //                TODO: provide feedback to user if successful
@@ -32,10 +32,10 @@ public class Main {
                     shelterMap.showShelters();
 //                TODO: have user select shelter
                     selected = scan.nextLine();
-                    if(shelterMap.containsShelter(selected)){
-                        if(shelterMap.getShelter(selected).isReceiving()){
+                    if (shelterMap.containsShelter(selected)) {
+                        if (shelterMap.getShelter(selected).isReceiving()) {
 
-                        } else{
+                        } else {
                             System.out.println("This shelter is not receiving animals.");
                         }
                     } else {
@@ -74,7 +74,8 @@ public class Main {
 //                TODO: provide user feedback
                     break;
             }
-    }
+        }
+
 
 }
 
