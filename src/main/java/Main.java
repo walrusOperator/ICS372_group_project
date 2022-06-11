@@ -43,13 +43,19 @@ public class Main {
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
-                    shelterExists(selected, true);
+                    shelterAvailable = shelterSearch(selected);
+                    if(shelterAvailable) {
+                        changeReceiving(selected, true);
+                    }
                     break;
                 case 4:
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
-                    shelterExists(selected, false);
+                    shelterAvailable = shelterSearch(selected);
+                    if(shelterAvailable) {
+                        changeReceiving(selected, false);
+                    }
                     break;
                 case 5:
                     Utilities.writeJSON(shelterMap);
@@ -72,12 +78,12 @@ public class Main {
             return false;
         }
 
-        public static void shelterExists(String selected, boolean status) {
-            if (!shelterMap.containsShelter(selected)) {
-                System.out.println("This is not a valid shelter.");
-            } else {
-                shelterMap.getShelter(selected).setReceiving(status);
-            }
+        public static void changeReceiving(String selected, boolean status) {
+//            if (!shelterMap.containsShelter(selected)) {
+//                System.out.println("This is not a valid shelter.");
+//            } else {
+//                shelterMap.getShelter(selected).setReceiving(status);
+//            }
             if(status){
                 System.out.println("Receiving enabled for shelter " + selected + "\n");
             } else {
@@ -92,6 +98,7 @@ public class Main {
 //            } else {
             System.out.println("Please enter the animal type: ");
             String type = scan.nextLine();
+//            should we consider making a method for this? Also used in ShelterList
             if (type.equalsIgnoreCase("cat") ||
                     type.equalsIgnoreCase("dog") ||
                     type.equalsIgnoreCase("bird") ||
