@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Utilities {
 //        TODO: After shelter and animal classes created build
         JSONArray sheltersToWrite = new JSONArray();
         JSONObject fileData = new JSONObject();
-        List<Shelter> allShelters = (List<Shelter>) roster.getShelters();
+        List<Shelter> allShelters =  new ArrayList<Shelter>(roster.getShelters());
 
         for (int i = 0; i < allShelters.size(); i++) {
             Shelter currentShelter = allShelters.get(i);
