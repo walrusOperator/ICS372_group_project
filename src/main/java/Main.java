@@ -34,7 +34,11 @@ public class Main {
                     selected = scan.nextLine();
                     shelterSearch(selected);
 //                TODO: have user add in animal data
-                    addNewAnimal(selected);
+                    if(shelterMap.getShelter(selected).isReceiving()) {
+                        addNewAnimal(selected);
+                    } else {
+                        System.out.println("This shelter is not receiving animals.");
+                    }
                     break;
 
                 case 3:
