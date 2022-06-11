@@ -43,10 +43,11 @@ public class Main {
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
-                    boolean shelterAvailable = shelterSearch(selected);
-                    if(shelterAvailable) {
-                        addUserCreatedAnimal(createNewAnimal(), selected);
-//                        createNewAnimal(selected);
+                    if(shelterSearch(selected)) {
+                        Animal newAnimal = createNewAnimal();
+                        if(newAnimal != null) {
+                            addUserCreatedAnimal(newAnimal, selected);
+                        }
                     }
                     break;
 
@@ -54,8 +55,7 @@ public class Main {
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
-                    shelterAvailable = shelterSearch(selected);
-                    if(shelterAvailable) {
+                    if(shelterSearch(selected)) {
                         changeReceiving(selected, true);
                     }
                     break;
@@ -64,8 +64,7 @@ public class Main {
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
-                    shelterAvailable = shelterSearch(selected);
-                    if(shelterAvailable) {
+                    if(shelterSearch(selected)) {
                         changeReceiving(selected, false);
                     }
                     break;
@@ -74,8 +73,7 @@ public class Main {
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
-                    shelterAvailable = shelterSearch(selected);
-                    if(shelterAvailable){
+                    if(shelterSearch(selected)){
                         System.out.println(shelterMap.getShelter(selected).showAnimals());
                     }
                     break;
@@ -103,7 +101,7 @@ public class Main {
                     return false;
                 }
             } else {
-                System.out.println("Please select a valid shelter\n");
+                System.out.println("Invalid shelter ID\n");
             }
             return false;
         }
@@ -123,8 +121,8 @@ public class Main {
         }
 
     /**
-     *
-     * @return
+     * Method responsible for collecting user input to create new Animal object
+     * @return (Animal) - user defined animal object
      */
     public static Animal createNewAnimal() {
             Scanner scan = new Scanner(System.in);
@@ -142,7 +140,6 @@ public class Main {
                     System.out.println("Please enter the receipt date: ");
                     long receipt = scan.nextLong();
                     scan.nextLine();
-
                     return new Animal(type, name, id, weight, receipt);
                 }catch (Exception e){
                     System.out.println("Animal could not be created\n");
@@ -155,9 +152,9 @@ public class Main {
         }
 
     /**
-     *
-     * @param newAnimal
-     * @param selected
+     * Method responsible for adding Animal object into previously created Shelter object
+     * @param newAnimal - (Animal) animal object to be added to shelter object
+     * @param selected - (String) shelter ID
      */
     public static void addUserCreatedAnimal(Animal newAnimal, String selected){
             try{
@@ -172,7 +169,8 @@ public class Main {
         }
 
     /**
-     *
+     * Method loops through all shelters in map and all animal objects in each shelter object
+     * and prints all to console.
      */
     public static void showAllAnimals(){
             List<Shelter> allShelters = new ArrayList<>(shelterMap.getShelters());
