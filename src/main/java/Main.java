@@ -36,8 +36,6 @@ public class Main {
 //                TODO: have user add in animal data
                     if(shelterMap.getShelter(selected).isReceiving()) {
                         addNewAnimal(selected);
-                    } else {
-                        System.out.println("This shelter is not receiving animals.");
                     }
                     break;
 
