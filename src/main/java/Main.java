@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     static ShelterList shelterMap = new ShelterList();
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         do {
@@ -33,6 +34,7 @@ public class Main {
                     shelterSearch(selected);
 //                TODO: have user add in animal data
                     break;
+
                 case 3:
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
@@ -54,6 +56,7 @@ public class Main {
                     break;
             }
         }
+
         public static void shelterSearch(String selected){
             if (shelterMap.containsShelter(selected)) {
                 if (shelterMap.getShelter(selected).isReceiving()) {
@@ -65,6 +68,7 @@ public class Main {
                 System.out.println("This is not a valid shelter.");
             }
         }
+
         public static void shelterExists(String selected, boolean status) {
             if (!shelterMap.containsShelter(selected)) {
                 System.out.println("This is not a valid shelter\n");
