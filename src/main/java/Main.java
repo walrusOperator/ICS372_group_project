@@ -40,15 +40,14 @@ public class Main {
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
                     shelterExists(selected, true);
-                    System.out.println("Receiving enabled for shelter " + selected + "\n");
 
                     break;
                 case 4:
-                    System.out.println("Please select a shelter: ");
                     shelterMap.showShelters();
+                    System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
                     shelterExists(selected, false);
-                    System.out.println("Receiving disabled for shelter " + selected + "\n");
+//                    System.out.println("Receiving disabled for shelter " + selected + "\n");
                     break;
                 case 5:
                     Utilities.writeJSON();
@@ -64,8 +63,6 @@ public class Main {
                 } else {
                     System.out.println("This shelter is not receiving animals.");
                 }
-            } else {
-                System.out.println("This is not a valid shelter.");
             }
         }
 
@@ -74,6 +71,11 @@ public class Main {
                 System.out.println("This is not a valid shelter\n");
             } else {
                 shelterMap.getShelter(selected).setReceiving(status);
+            }
+            if(status == true){
+                System.out.println("Receiving enabled for shelter " + selected + "\n");
+            } else {
+                System.out.println("Receiving disabled for shelter " + selected + "\n");
             }
         }
 
