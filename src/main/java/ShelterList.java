@@ -28,8 +28,7 @@ public class ShelterList {
         }
         long receipt_date = (long) animal.get("receipt_date");
 
-        if (animal_type.equalsIgnoreCase("dog") || animal_type.equalsIgnoreCase("cat") ||
-                animal_type.equalsIgnoreCase("bird") || animal_type.equalsIgnoreCase("rabbit")) {
+        if (validAnimal(animal_type)) {
 
                 Animal tempAnimal = new Animal(animal_type, animal_name, animal_id, animal_weight, receipt_date);
                 if (!(mapOfShelters.containsKey(shelter_id))) {
@@ -68,4 +67,12 @@ public class ShelterList {
 
     public Collection<Shelter> getShelters(){
         return mapOfShelters.values();}
+
+    public boolean validAnimal(String type){
+        if(type.equalsIgnoreCase("dog") || type.equalsIgnoreCase("cat") ||
+                type.equalsIgnoreCase("bird") || type.equalsIgnoreCase("rabbit")){
+            return true;
+        }
+        return false;
+    }
 }

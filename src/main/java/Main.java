@@ -100,10 +100,7 @@ public class Main {
             System.out.println("Please enter the animal type: ");
             String type = scan.nextLine();
 //            should we consider making a method for this? Also used in ShelterList
-            if (type.equalsIgnoreCase("cat") ||
-                    type.equalsIgnoreCase("dog") ||
-                    type.equalsIgnoreCase("bird") ||
-                    type.equalsIgnoreCase("rabbit")) {
+            if (shelterMap.validAnimal(type)) {
 
                 System.out.println("Please enter the animal name: ");
                 String name = scan.nextLine();
