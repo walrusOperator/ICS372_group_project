@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -33,6 +34,7 @@ public class Main {
                     selected = scan.nextLine();
                     shelterSearch(selected);
 //                TODO: have user add in animal data
+                    addNewAnimal(selected);
                     break;
 
                 case 3:
@@ -66,7 +68,7 @@ public class Main {
 
         public static void shelterExists(String selected, boolean status) {
             if (!shelterMap.containsShelter(selected)) {
-                System.out.println("This is not a valid shelter");
+                System.out.println("This is not a valid shelter.");
             } else {
                 shelterMap.getShelter(selected).setReceiving(status);
             }
@@ -77,6 +79,40 @@ public class Main {
             }
         }
 
+        public static void addNewAnimal(String selected){
+            Scanner scan = new Scanner(System.in);
+            if(!shelterMap.containsShelter(selected)){
+                System.out.println("This is not a valid shelter.");
+            } else {
+                System.out.println("Please enter the animal type: ");
+                String type = scan.nextLine();
+                if(type.equalsIgnoreCase("cat")||
+                        type.equalsIgnoreCase("dog")||
+                        type.equalsIgnoreCase("bird")||
+                        type.equalsIgnoreCase("rabbit")) {
 
+                    System.out.println("Please enter the animal name: ");
+                    String name = scan.nextLine();
+                    System.out.println("Please enter the animal ID: ");
+                    String id = scan.nextLine();
+                    System.out.println("Please enter the animal weight: ");
+                    double weight = scan.nextDouble();
+                    scan.nextLine();
+                    System.out.println("Please enter the receipt date: ");
+                    long receipt = scan.nextLong();
+                    scan.nextLine();
+
+                    Animal addition = new Animal(type, name, id, weight, receipt);
+                    Shelter tempShelter = shelterMap.getShelter(selected);
+                    List<Animal> tempList = tempShelter.getAnimalList();
+                    tempList.add(addition);
+                    tempShelter.setAnimalList(tempList);
+
+                    System.out.println("New Animal has been added.");
+                } else {
+                    System.out.println("Not a valid animal type.");
+                }
+            }
+        }
 }
 
