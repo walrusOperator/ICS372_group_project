@@ -40,17 +40,15 @@ public class Main {
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
                     shelterExists(selected, true);
-
                     break;
                 case 4:
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
                     selected = scan.nextLine();
                     shelterExists(selected, false);
-//                    System.out.println("Receiving disabled for shelter " + selected + "\n");
                     break;
                 case 5:
-                    Utilities.writeJSON();
+                    Utilities.writeJSON(shelterMap);
 //                TODO: provide user feedback
                     break;
             }
