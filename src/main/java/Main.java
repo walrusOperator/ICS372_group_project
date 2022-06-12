@@ -35,10 +35,12 @@ public class Main {
             Scanner scan = new Scanner(System.in);
 
             switch (userOption) {
+                //call to add all shelters and animals from JSON file
                 case 1:
                     shelterMap.addIncoming();
                     break;
 
+                //validate shelter ID, if shelter exists create Animal object and add to existing Shelter object
                 case 2:
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
@@ -51,6 +53,7 @@ public class Main {
                     }
                     break;
 
+                //Check for existing shelter, if exists update shelter to accept incoming animals
                 case 3:
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
@@ -60,6 +63,7 @@ public class Main {
                     }
                     break;
 
+                //Check for existing shelter, if exists update shelter to deny incoming animals
                 case 4:
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
@@ -69,6 +73,7 @@ public class Main {
                     }
                     break;
 
+                //validate that shelter exists, print all objects contained in shelter object
                 case 5:
                     shelterMap.showShelters();
                     System.out.println("Please select a shelter: ");
@@ -77,10 +82,13 @@ public class Main {
                         System.out.println(shelterMap.getShelter(selected).showAnimals());
                     }
                     break;
+
+                //call method to display all Animal objects to console by shelter
                 case 6:
                     showAllAnimals();
-
                     break;
+
+                //call Utilities method to create a JSON file of the shelterMap hashmap
                 case 7:
                     Utilities.writeJSON(shelterMap);
                     break;
