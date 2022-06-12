@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Shelter {
-    private List<Animal> animalList = new ArrayList<Animal>();
+    private List<Animal> animalList = new ArrayList<>();
     private final String shelterID;
 
     Shelter(String shelterId){
