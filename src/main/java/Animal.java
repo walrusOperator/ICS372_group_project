@@ -24,9 +24,11 @@ public class Animal {
     public String getAnimal_Name() {
         return animal_Name;
     }
+
     public void setAnimal_weight(double animal_weight) {
         this.animal_weight = animal_weight;
     }
+
     public double getAnimal_weight() {
         return animal_weight;
     }
@@ -34,6 +36,7 @@ public class Animal {
     public long getReceipt_date() {
         return receipt_date;
     }
+
     @Override
     public String toString() {
         return "Animal{" +
