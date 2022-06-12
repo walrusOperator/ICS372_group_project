@@ -1,15 +1,15 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-
 import org.json.simple.*;
 import org.json.simple.parser.*;
 
 public class Utilities {
 
-    // reads in a JSON file and converts into a JSON object
+    /**
+     * Method used to convert a json file into json array
+     * @return (JSONArray) - animals parsed from json input file
+     */
     public static JSONArray readJSON(){
         JSONParser parser = new JSONParser();
 
@@ -23,14 +23,16 @@ public class Utilities {
         return null;
     }
 
+    /**
+     * Method used to create a JSON output file of the given shelterList
+     * @param roster - (ShelterList) shelterList used to create the JSON output file
+     */
     public static void writeJSON(ShelterList roster){
         JSONArray sheltersToWrite = new JSONArray();
         JSONObject fileData = new JSONObject();
-        List<Shelter> allShelters =  new ArrayList<Shelter>(roster.getShelters());
+        List<Shelter> allShelters = new ArrayList<>(roster.getShelters());
 
-        for (int i = 0; i < allShelters.size(); i++) {
-            Shelter currentShelter = allShelters.get(i);
-
+        for (Shelter currentShelter : allShelters) {
             for (int j = 0; j < currentShelter.size(); j++) {
                 Animal currentAnimal = currentShelter.getAnimalList().get(j);
                 JSONObject currentAnimalData = new JSONObject();
