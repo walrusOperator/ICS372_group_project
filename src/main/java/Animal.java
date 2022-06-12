@@ -12,21 +12,15 @@ public class Animal {
         this.animal_weight = animal_weight;
         this.receipt_date = receipt_date;
     }
-    public void setAnimal_ID(String animal_ID) {
-        this.animal_ID = animal_ID;
-    }
+
     public String getAnimal_ID() {
         return animal_ID;
     }
-    public void setAnimal_Type(String animal_Type) {
-        this.animal_Type = animal_Type;
-    }
+
     public String getAnimal_Type() {
         return animal_Type;
     }
-    public void setAnimal_Name(String animal_Name) {
-        this.animal_Name = animal_Name;
-    }
+
     public String getAnimal_Name() {
         return animal_Name;
     }
@@ -36,9 +30,7 @@ public class Animal {
     public double getAnimal_weight() {
         return animal_weight;
     }
-    public void setReceipt_date(long receipt_date) {
-        this.receipt_date = receipt_date;
-    }
+
     public long getReceipt_date() {
         return receipt_date;
     }

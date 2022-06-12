@@ -9,28 +9,19 @@ public class Shelter {
         this.shelterID = shelterId;
     }
 
-//    public void setReceiving(boolean receive){
-//
-//        receiving = receive;
-//    }
-
     public boolean isReceiving(){
-
         return true;
     }
 
     public List<Animal> getAnimalList() {
-
         return animalList;
     }
 
     public void setAnimalList(List<Animal> newlist) {
-
         animalList = newlist;
     }
 
     public String toString(){
-
         return shelterID;
     }
 /*
@@ -44,7 +35,6 @@ returns a string of all animals in the list for specific shelter
             str += "\n";
         }
         return str;
-
     }
     public int size(){
         return animalList.size();
