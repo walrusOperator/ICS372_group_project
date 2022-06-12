@@ -3,21 +3,20 @@ import java.util.List;
 
 public class Shelter {
     private List<Animal> animalList = new ArrayList<Animal>();
-    private String shelterID;
-    private boolean receiving = true;
+    private final String shelterID;
 
     Shelter(String shelterId){
         this.shelterID = shelterId;
     }
 
-    public void setReceiving(boolean receive){
-
-        receiving = receive;
-    }
+//    public void setReceiving(boolean receive){
+//
+//        receiving = receive;
+//    }
 
     public boolean isReceiving(){
 
-        return receiving;
+        return true;
     }
 
     public List<Animal> getAnimalList() {
@@ -31,6 +30,7 @@ public class Shelter {
     }
 
     public String toString(){
+
         return shelterID;
     }
 /*
