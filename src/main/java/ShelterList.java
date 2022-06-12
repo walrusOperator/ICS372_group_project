@@ -6,9 +6,6 @@ import java.util.*;
 public class ShelterList {
     Map<String, Shelter> mapOfShelters = new HashMap<>();
 
-    /**
-     *
-     */
     public void addIncoming() {
         JSONArray j = Utilities.readJSON();
 //      https://howtodoinjava.com/java/library/json-simple-read-write-json-examples/
