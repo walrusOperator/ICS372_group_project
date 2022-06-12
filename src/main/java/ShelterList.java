@@ -12,7 +12,6 @@ public class ShelterList {
         j.forEach( animal -> parseAnimalObject( (JSONObject) animal));
     }
 
-    //consider moving method to animal class.
     private void parseAnimalObject(JSONObject animal) {
         String shelter_id = (String) animal.get("shelter_id");
         String animal_type = (String) animal.get("animal_type");
