@@ -93,4 +93,32 @@ public class ShelterList {
         return type.equalsIgnoreCase("dog") || type.equalsIgnoreCase("cat") ||
                 type.equalsIgnoreCase("bird") || type.equalsIgnoreCase("rabbit");
     }
+
+    public static boolean shelterSearch(String selected, ShelterList shelters){
+        if (shelters.containsShelter(selected)) {
+            if (shelters.getShelter(selected).isReceiving()) {
+                return true;
+            } else {
+                System.out.println("This shelter is not receiving animals\n");
+                return false;
+            }
+        } else {
+            System.out.println("Invalid shelter ID\n");
+        }
+        return false;
+    }
+    /**
+     * Method loops through all shelters in map and all animal objects in each shelter object
+     * and prints all to console.
+     */
+    public static void showAllAnimals (ShelterList shelterMap) {
+        List<Shelter> allShelters = new ArrayList<>(shelterMap.getShelters());
+        for (Shelter currentShelter : allShelters) {
+            System.out.println("Shelter ID: " + currentShelter);
+            for (int j = 0; j < currentShelter.size(); j++) {
+                System.out.println(currentShelter.getAnimalList().get(j));
+            }
+            System.out.println();
+        }
+    }
 }
