@@ -1,12 +1,13 @@
 
 public class Main {
     private static final ShelterList shelterMap = new ShelterList();
-
+    @SuppressWarnings("InfiniteLoopStatement")
     public static void main(String[] args) {
-        UserInterface.printMenu();
-        int userSelection = UserInterface.userOption();
-        userMenu(userSelection, shelterMap);
-
+        do {
+            UserInterface.printMenu();
+            int userSelection = UserInterface.userOption();
+            userMenu(userSelection, shelterMap);
+        }while(true);
     }
 
     public static void userMenu(int userOption, ShelterList shelterMap) {
