@@ -20,6 +20,7 @@ public class UserInterface {
     }
 
     public static void userMenu(int userOption, ShelterList shelterMap) {
+
         String selected;
         Scanner scan = new Scanner(System.in);
 
