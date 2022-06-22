@@ -29,8 +29,7 @@ public class UserInterface {
 
     public static void userMenu(int userOption, ShelterList shelterMap) {
 
-//        String selected;
-//        Scanner scan = new Scanner(System.in);
+        String selected;
 
         switch (userOption) {
             //call to add all shelters and animals from JSON file
@@ -41,7 +40,7 @@ public class UserInterface {
             //validate shelter ID, if shelter exists create Animal object and add to existing Shelter object
             case 2:
                 shelterMap.showShelters();
-                String selected = shelterSelection();
+                selected = shelterSelection();
                 if(ShelterList.shelterSearch(selected, shelterMap)) {
                     Animal newAnimal = Animal.createNewAnimal(shelterMap);
                     if(newAnimal != null) {
