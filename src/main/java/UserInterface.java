@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class UserInterface {
+    static Scanner scan = new Scanner(System.in);
 
     public static int userOption(){
         Scanner scan = new Scanner(System.in);
@@ -19,10 +20,17 @@ public class UserInterface {
                 "7: Export json file");
     }
 
+    public static String shelterSelection(){
+        System.out.println("Please select a shelter: ");
+        String selected;
+        selected = scan.nextLine();
+        return selected;
+    };
+
     public static void userMenu(int userOption, ShelterList shelterMap) {
 
-        String selected;
-        Scanner scan = new Scanner(System.in);
+//        String selected;
+//        Scanner scan = new Scanner(System.in);
 
         switch (userOption) {
             //call to add all shelters and animals from JSON file
@@ -33,8 +41,7 @@ public class UserInterface {
             //validate shelter ID, if shelter exists create Animal object and add to existing Shelter object
             case 2:
                 shelterMap.showShelters();
-                System.out.println("Please select a shelter: ");
-                selected = scan.nextLine();
+                String selected = shelterSelection();
                 if(ShelterList.shelterSearch(selected, shelterMap)) {
                     Animal newAnimal = Animal.createNewAnimal(shelterMap);
                     if(newAnimal != null) {
@@ -46,8 +53,7 @@ public class UserInterface {
             //Check for existing shelter, if exists update shelter to accept incoming animals
             case 3:
                 shelterMap.showShelters();
-                System.out.println("Please select a shelter: ");
-                selected = scan.nextLine();
+                selected = shelterSelection();
                 if(ShelterList.shelterSearch(selected, shelterMap)) {
                     Shelter.changeReceiving(selected, true);
                 }
@@ -56,8 +62,7 @@ public class UserInterface {
             //Check for existing shelter, if exists update shelter to deny incoming animals
             case 4:
                 shelterMap.showShelters();
-                System.out.println("Please select a shelter: ");
-                selected = scan.nextLine();
+                selected = shelterSelection();
                 if(ShelterList.shelterSearch(selected, shelterMap)) {
                     Shelter.changeReceiving(selected, false);
                 }
@@ -66,8 +71,7 @@ public class UserInterface {
             //validate that shelter exists, print all objects contained in shelter object
             case 5:
                 shelterMap.showShelters();
-                System.out.println("Please select a shelter: ");
-                selected = scan.nextLine();
+                selected = shelterSelection();
                 if(ShelterList.shelterSearch(selected, shelterMap)){
                     System.out.println(shelterMap.getShelter(selected).showAnimals());
                 }
